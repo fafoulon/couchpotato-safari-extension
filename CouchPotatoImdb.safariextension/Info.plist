@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Fafoulon</string>
+	<key>CFBundleDisplayName</key>
+	<string>CouchPotato</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.fafoulon.couchpotatoimdb</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.3</string>
+	<key>CFBundleVersion</key>
+	<string>4</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Database Quota</key>
+		<real>1048576</real>
+		<key>Global Page</key>
+		<string>global.html</string>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>cpimdb.js</string>
+			</array>
+		</dict>
+		<key>Stylesheets</key>
+		<array>
+			<string>style.css</string>
+		</array>
+	</dict>
+	<key>Description</key>
+	<string>Import movies your favorite website to CouchPotato</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.allocine.fr</string>
+				<string>*.themoviedb.org</string>
+				<string>allocine.fr</string>
+				<string>imdb.com</string>
+				<string>*.imdb.com</string>
+				<string>sharethe.tv</string>
+				<string>*.sharethe.tv</string>
+				<string>themoviedb.org</string>
+				<string>trailers.apple.com</string>
+				<string>trakt.tv</string>
+				<string>*.trakt.tv</string>
+				<string>whiwa.net</string>
+				<string>*.whiwa.net</string>
+				<string>moviemeter.nl</string>
+				<string>*.moviemeter.nl</string>
+				<string>*.metacritic.com</string>
+				<string>metacritic.com</string>
+			</array>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
+	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://couchpotato.fafoulon.fr/updateExtension.plist</string>
+	<key>Website</key>
+	<string>http://couchpotato.fafoulon.fr</string>
+</dict>
+</plist>

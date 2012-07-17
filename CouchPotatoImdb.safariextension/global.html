@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script type="text/javascript">
+
+  function getYearFromTitle(){
+		var year = "";
+		if(document.title)
+		{
+			var mName = document.title.substr(0, document.title.indexOf(" -")).replace(/ /g, "+");
+			year = mName.substr(document.title.indexOf("(")+1).replace(")","");					
+		}
+
+		return year;
+	}
+	
+   function getYear(xml){
+        var year;
+        if (xml) {
+            year = xml.getElementsByTagName('released')[0].firstChild;
+            if (year != null) {
+                year = year.data;
+                year = year.substr(0, 4);
+            } else {
+                year = getYearFromTitle();
+            }
+        } else {
+            year = getYearFromTitle();
+        }
+
+        return year;
+    }
+  
+  
+    function respondToMessage(messageEvent) {
+
+    if (messageEvent.name == "getSettingValue") {
+
+           // getItem("foo");
+        var value = safari.extension.settings.getItem(messageEvent.message);
+        // return value of foo to injected script
+          // safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("settingValueIs", value);
+           messageEvent.target.page.dispatchMessage("settingValueIs", value);
+
+    } 
+    
+    if (messageEvent.name == "crossSite")
+    {
+    
+	    var xml = new XMLHttpRequest();
+		xml.open('GET', messageEvent.message,true);
+		xml.setRequestHeader("Accept", "application/atom+xml,application/xml,text/xml");
+		
+		xml.onload = function(){
+
+            if (!xml.responseXML) {
+                xml.responseXML = new DOMParser().parseFromString(xml.responseText, "text/xml");
+            }
+
+            var imdb_id = xml.responseXML.getElementsByTagName('imdb_id')[0].firstChild.nodeValue; 
+            var year = getYear(xml.responseXML);
+		 	messageEvent.target.page.dispatchMessage("crossResult", imdb_id+";"+year);
+		};
+		xml.send();
+    }
+
+}
+
+safari.application.addEventListener("message",respondToMessage,false);
+  </script>
+</head>
+<body></body>
+</html>
+
+
